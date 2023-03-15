@@ -9,6 +9,7 @@ const contactsInitialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
+  // Не використовував можливості бібліотеки Immer
   reducers: {
     addContact: {
       reducer(state, action) {
