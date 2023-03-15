@@ -4,9 +4,10 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { ChildrenBox, Container, Notification } from './App.styled';
 import { useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
 
 export function App() {
-  const { contacts } = useSelector(state => state.contacts);
+  const { contacts } = useSelector(getContacts);
 
   return (
     <Container>
