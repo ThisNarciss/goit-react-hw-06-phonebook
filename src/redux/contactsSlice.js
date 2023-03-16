@@ -4,7 +4,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const contactsInitialState = {
-  contacts: [],
+  items: [],
 };
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -12,8 +12,9 @@ const contactsSlice = createSlice({
   // Не використовував можливості бібліотеки Immer
   reducers: {
     addContact: {
-      reducer(state, action) {
-        return { ...state, contacts: [...state.contacts, action.payload] };
+      reducer(state, { payload }) {
+        state.items.push(payload);
+        // return { ...state, items: [...state.items, payload] };
       },
       prepare(obj) {
         return {
@@ -24,13 +25,12 @@ const contactsSlice = createSlice({
         };
       },
     },
-    deleteContact(state, action) {
-      return {
-        ...state,
-        contacts: state.contacts.filter(
-          contact => contact.id !== action.payload
-        ),
-      };
+    deleteContact(state, { payload }) {
+      state.items = state.items.filter(item => item.id !== payload);
+      // return {
+      //   ...state,
+      //   items: state.items.filter(item => item.id !== payload),
+      // };
     },
   },
 });

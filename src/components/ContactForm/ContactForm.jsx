@@ -19,7 +19,7 @@ import {
 import { getContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
-  name: yup.string().min(5).max(30).trim().required(),
+  name: yup.string().min(2).max(30).trim().required(),
   number: yup.string().min(12).max(13).trim().required(),
 });
 
@@ -32,7 +32,7 @@ const initialValue = {
 };
 
 export const ContactForm = () => {
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const addNewContact = obj => {
